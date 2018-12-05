@@ -26,7 +26,7 @@ namespace WebApplication1.DAL
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Test> Tests { get; set; }
         public DbSet<Test_Materials> Test_Materials { get; set; }
-        public DbSet<WorkOrder> WorkOrders { get; set; }
+        public DbSet<Work_Order> WorkOrders { get; set; }
 
 
     }

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<WebApplication1.Models.Work_Order>
+
+@{
+     ViewBag.Title = "Approve";
+}
+
+<h2>Approve</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.CustomerFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.StatusDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuotedPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActualPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Approved)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.Approved==0)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.CustomerFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status.StatusDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuotedPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ActualPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comments)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Approved)
+                </td>
+                <td>
+                    | @Html.ActionLink("Approve", "Approved", new { id = item.OrderID }) |
+                </td>
+            </tr>
+        }
+        
+    }
+
+</table>
+

@@ -18,7 +18,7 @@ namespace WebApplication1.Models
 
         [ForeignKey("WorkOrder")]
         public int OrderID { get; set; }
-        public virtual WorkOrder WorkOrder { get; set; }
+        public virtual Work_Order WorkOrder { get; set; }
 
         public DateTime DateDue { get; set; }
         public double Amount { get; set; }
