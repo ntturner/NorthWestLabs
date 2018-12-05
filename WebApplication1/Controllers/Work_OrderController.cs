@@ -11,33 +11,33 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class WorkOrdersController : Controller
+    public class Work_OrderController : Controller
     {
         private NorthWestContext db = new NorthWestContext();
 
-        // GET: WorkOrders
+        // GET: Work_Order
         public ActionResult Index()
         {
             var workOrders = db.WorkOrders.Include(w => w.Customer).Include(w => w.Status);
             return View(workOrders.ToList());
         }
 
-        // GET: WorkOrders/Details/5
+        // GET: Work_Order/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkOrder workOrder = db.WorkOrders.Find(id);
-            if (workOrder == null)
+            Work_Order work_Order = db.WorkOrders.Find(id);
+            if (work_Order == null)
             {
                 return HttpNotFound();
             }
-            return View(workOrder);
+            return View(work_Order);
         }
 
-        // GET: WorkOrders/Create
+        // GET: Work_Order/Create
         public ActionResult Create()
         {
             ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerFirstName");
@@ -45,82 +45,82 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        // POST: WorkOrders/Create
+        // POST: Work_Order/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderID,CustomerID,QuotedPrice,ActualPrice,Comments,StatusID,Approved")] WorkOrder workOrder)
+        public ActionResult Create([Bind(Include = "OrderID,CustomerID,QuotedPrice,ActualPrice,Comments,StatusID,Approved")] Work_Order work_Order)
         {
             if (ModelState.IsValid)
             {
-                db.WorkOrders.Add(workOrder);
+                db.WorkOrders.Add(work_Order);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerFirstName", workOrder.CustomerID);
-            ViewBag.StatusID = new SelectList(db.Statuses, "StatusID", "StatusDescription", workOrder.StatusID);
-            return View(workOrder);
+            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerFirstName", work_Order.CustomerID);
+            ViewBag.StatusID = new SelectList(db.Statuses, "StatusID", "StatusDescription", work_Order.StatusID);
+            return View(work_Order);
         }
 
-        // GET: WorkOrders/Edit/5
+        // GET: Work_Order/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkOrder workOrder = db.WorkOrders.Find(id);
-            if (workOrder == null)
+            Work_Order work_Order = db.WorkOrders.Find(id);
+            if (work_Order == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerFirstName", workOrder.CustomerID);
-            ViewBag.StatusID = new SelectList(db.Statuses, "StatusID", "StatusDescription", workOrder.StatusID);
-            return View(workOrder);
+            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerFirstName", work_Order.CustomerID);
+            ViewBag.StatusID = new SelectList(db.Statuses, "StatusID", "StatusDescription", work_Order.StatusID);
+            return View(work_Order);
         }
 
-        // POST: WorkOrders/Edit/5
+        // POST: Work_Order/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OrderID,CustomerID,QuotedPrice,ActualPrice,Comments,StatusID,Approved")] WorkOrder workOrder)
+        public ActionResult Edit([Bind(Include = "OrderID,CustomerID,QuotedPrice,ActualPrice,Comments,StatusID,Approved")] Work_Order work_Order)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(workOrder).State = EntityState.Modified;
+                db.Entry(work_Order).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerFirstName", workOrder.CustomerID);
-            ViewBag.StatusID = new SelectList(db.Statuses, "StatusID", "StatusDescription", workOrder.StatusID);
-            return View(workOrder);
+            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerFirstName", work_Order.CustomerID);
+            ViewBag.StatusID = new SelectList(db.Statuses, "StatusID", "StatusDescription", work_Order.StatusID);
+            return View(work_Order);
         }
 
-        // GET: WorkOrders/Delete/5
+        // GET: Work_Order/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            WorkOrder workOrder = db.WorkOrders.Find(id);
-            if (workOrder == null)
+            Work_Order work_Order = db.WorkOrders.Find(id);
+            if (work_Order == null)
             {
                 return HttpNotFound();
             }
-            return View(workOrder);
+            return View(work_Order);
         }
 
-        // POST: WorkOrders/Delete/5
+        // POST: Work_Order/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            WorkOrder workOrder = db.WorkOrders.Find(id);
-            db.WorkOrders.Remove(workOrder);
+            Work_Order work_Order = db.WorkOrders.Find(id);
+            db.WorkOrders.Remove(work_Order);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <style>
+        .cont {
+            position: relative;
+            width: 50%;
+        }
+
+        .image {
+            opacity: 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .cont:hover .image {
+            opacity: 0.3;
+        }
+
+        .cont:hover .middle {
+            opacity: 1;
+        }
+
+        .text {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            padding: 16px 32px;
+        }
+    </style>
+</head>
+<h2>Index</h2>
+
+<h2>Opacity with Box</h2>
+<p>Hover over the image to see the effect.</p>
+
+<div class="row">
+    <div class="cont">
+        <a href="@Url.Action("Approve","Singapore")">
+            <img src="~/Pictures/Approved.png" alt="Avatar" class="image img-thumbnail" style="width:100%">
+            <div class="middle">
+                <div class="text">Approve Work Orders</div>
+            </div>
+        </a>
+    </div>
+    <div class="cont">
+        <a href="@Url.Action("Schedule","Singapore")">
+            <img src="~/Pictures/Schedule.png" alt="Avatar" class="image img-thumbnail" style="width:100%">
+            <div class="middle">
+                <div class="text">Schedule Weekly Tests</div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="cont">
+        <a href="@Url.Action("Test","Singapore")">
+            <img src="~/Pictures/Test.png" alt="Avatar" class="image img-thumbnail" style="width:100%">
+            <div class="middle">
+                <div class="text">Conduct Tests</div>
+            </div>
+        </a>
+    </div>
+    <div class="cont">
+        <a href="@Url.Action("#","Singapore")">
+            <img src="~/Pictures/Test.png" alt="Avatar" class="image img-thumbnail" style="width:100%">
+            <div class="middle">
+                <div class="text">Other link</div>
+            </div>
+        </a>
+    </div>
+</div>
+
