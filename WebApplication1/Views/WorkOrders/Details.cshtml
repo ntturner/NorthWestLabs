@@ -1,0 +1,66 @@
+﻿@model WebApplication1.Models.WorkOrder
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WorkOrder</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.CustomerFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.CustomerFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status.StatusDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status.StatusDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuotedPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuotedPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActualPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActualPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Approved)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Approved)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

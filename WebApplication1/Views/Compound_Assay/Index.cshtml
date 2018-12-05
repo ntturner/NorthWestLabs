@@ -1,0 +1,111 @@
+﻿@model IEnumerable<WebApplication1.Models.Compound_Assay>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Assay.AssayName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Compound.CompoundName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.StatusDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkOrder.Comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestAll)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateArrived)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReceivedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Appearance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActualWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MolecularMass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MTD)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assay.AssayName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Compound.CompoundName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.StatusDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkOrder.Comments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestAll)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateArrived)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReceivedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateDue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Appearance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActualWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MolecularMass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MTD)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,130 @@
+﻿@model WebApplication1.Models.Compound_Assay
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Compound_Assay</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Assay.AssayName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assay.AssayName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Compound.CompoundName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Compound.CompoundName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status.StatusDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status.StatusDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkOrder.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkOrder.Comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TestAll)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestAll)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateArrived)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateArrived)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceivedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReceivedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateDue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateDue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Appearance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Appearance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActualWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActualWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MolecularMass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MolecularMass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MTD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MTD)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

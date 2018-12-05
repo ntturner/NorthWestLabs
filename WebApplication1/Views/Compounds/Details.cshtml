@@ -1,0 +1,26 @@
+﻿@model WebApplication1.Models.Compound
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Compound</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CompoundName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompoundName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LTNumber }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

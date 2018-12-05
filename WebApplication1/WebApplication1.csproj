@@ -190,14 +190,37 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AssaysController.cs" />
+    <Compile Include="Controllers\Assay_TestController.cs" />
+    <Compile Include="Controllers\CompoundsController.cs" />
+    <Compile Include="Controllers\Compound_AssayController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InvoicesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MaterialsController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Controllers\TestsController.cs" />
+    <Compile Include="Controllers\Test_MaterialsController.cs" />
+    <Compile Include="Controllers\WorkOrdersController.cs" />
+    <Compile Include="DAL\NorthWestContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Assay.cs" />
+    <Compile Include="Models\Assay_Test.cs" />
+    <Compile Include="Models\Compound.cs" />
+    <Compile Include="Models\Compound_Assay.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Materials.cs" />
+    <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\Test.cs" />
+    <Compile Include="Models\Test_Materials.cs" />
+    <Compile Include="Models\WorkOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -259,7 +282,9 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -302,6 +327,61 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\WorkOrders\Create.cshtml" />
+    <Content Include="Views\WorkOrders\Delete.cshtml" />
+    <Content Include="Views\WorkOrders\Details.cshtml" />
+    <Content Include="Views\WorkOrders\Edit.cshtml" />
+    <Content Include="Views\WorkOrders\Index.cshtml" />
+    <Content Include="Views\Invoices\Create.cshtml" />
+    <Content Include="Views\Invoices\Delete.cshtml" />
+    <Content Include="Views\Invoices\Details.cshtml" />
+    <Content Include="Views\Invoices\Edit.cshtml" />
+    <Content Include="Views\Invoices\Index.cshtml" />
+    <Content Include="Views\Compound_Assay\Create.cshtml" />
+    <Content Include="Views\Compound_Assay\Delete.cshtml" />
+    <Content Include="Views\Compound_Assay\Details.cshtml" />
+    <Content Include="Views\Compound_Assay\Edit.cshtml" />
+    <Content Include="Views\Compound_Assay\Index.cshtml" />
+    <Content Include="Views\Compounds\Create.cshtml" />
+    <Content Include="Views\Compounds\Delete.cshtml" />
+    <Content Include="Views\Compounds\Details.cshtml" />
+    <Content Include="Views\Compounds\Edit.cshtml" />
+    <Content Include="Views\Compounds\Index.cshtml" />
+    <Content Include="Views\Assays\Create.cshtml" />
+    <Content Include="Views\Assays\Delete.cshtml" />
+    <Content Include="Views\Assays\Details.cshtml" />
+    <Content Include="Views\Assays\Edit.cshtml" />
+    <Content Include="Views\Assays\Index.cshtml" />
+    <Content Include="Views\Assay_Test\Create.cshtml" />
+    <Content Include="Views\Assay_Test\Delete.cshtml" />
+    <Content Include="Views\Assay_Test\Details.cshtml" />
+    <Content Include="Views\Assay_Test\Edit.cshtml" />
+    <Content Include="Views\Assay_Test\Index.cshtml" />
+    <Content Include="Views\Tests\Create.cshtml" />
+    <Content Include="Views\Tests\Delete.cshtml" />
+    <Content Include="Views\Tests\Details.cshtml" />
+    <Content Include="Views\Tests\Edit.cshtml" />
+    <Content Include="Views\Tests\Index.cshtml" />
+    <Content Include="Views\Test_Materials\Create.cshtml" />
+    <Content Include="Views\Test_Materials\Delete.cshtml" />
+    <Content Include="Views\Test_Materials\Details.cshtml" />
+    <Content Include="Views\Test_Materials\Edit.cshtml" />
+    <Content Include="Views\Test_Materials\Index.cshtml" />
+    <Content Include="Views\Materials\Create.cshtml" />
+    <Content Include="Views\Materials\Delete.cshtml" />
+    <Content Include="Views\Materials\Details.cshtml" />
+    <Content Include="Views\Materials\Edit.cshtml" />
+    <Content Include="Views\Materials\Index.cshtml" />
+    <Content Include="Views\Status\Create.cshtml" />
+    <Content Include="Views\Status\Delete.cshtml" />
+    <Content Include="Views\Status\Details.cshtml" />
+    <Content Include="Views\Status\Edit.cshtml" />
+    <Content Include="Views\Status\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

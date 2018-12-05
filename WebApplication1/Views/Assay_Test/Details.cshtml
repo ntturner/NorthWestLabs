@@ -1,0 +1,42 @@
+﻿@model WebApplication1.Models.Assay_Test
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Assay_Test</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Assay.AssayName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assay.AssayName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Test.TestDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Test.TestDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TestRequired)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestRequired)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
