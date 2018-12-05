@@ -70,6 +70,15 @@ namespace WebApplication1.Models
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
+        [Phone]
+        [StringLength(20, ErrorMessage = "Incorrect format. Please make sure to include area code if you have not. Each phone number should be at least 10 characters.", MinimumLength = 10)]
+        [Display(Name = "Phone Number")]
+        public string Phone { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
