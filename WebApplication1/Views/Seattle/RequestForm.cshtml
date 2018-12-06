@@ -6,14 +6,12 @@
 }
 
 <h2>New Work Order Request</h2>
+<p>(Note: A work order my contain up to 5 compounds. If you have additional compounds, you may submit another work order request.)</p>
 <hr />
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-
-<div class="form-horizontal">
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -65,6 +63,7 @@
 
     </div>
 
+    <p class="text-danger hidden" id="five-compounds">A single work order can process up to five compounds.</p>
     <button class="btn btn-dark" id="add-button" type="button"><span class="text-success">+ Add compound</span></button>
 
     <div class="form-group">
@@ -88,55 +87,58 @@
             <input type="submit" value="Submit" class="btn btn-success" />
         </div>
     </div>
-</div>
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script>
     var counter = 1;
 
      $("#add-button").click(function(){
-         $("#add-compound").append("<div class=\"form-group\">" +
-            "<label for=\"compound_" + counter + "\" class=\"control-label col-md-2\">Compound</label>" +
-            "<div class=\"col-md-10\">" +
-                "<select name=\"assay_compound[" + counter + "]['compound']\" id=\"compound_" + counter + "\">" +
-                    "<option></option>" +
+         if (counter < 5) {
+             $("#add-compound").append("<div class=\"form-group\">" +
+                 "<label for=\"compound_" + counter + "\" class=\"control-label col-md-2\">Compound</label>" +
+                 "<div class=\"col-md-10\">" +
+                 "<select name=\"assay_compound[" + counter + "]['compound']\" id=\"compound_" + counter + "\">" +
+                 "<option></option>" +
                     @foreach (Compound compound in ViewBag.Compounds)
                     {
                         @: "<option value=\"@compound.LTNumber\">@compound.CompoundName</option>" +
                     }
-                "</select>" +
-            "</div>" +
-             "</div>" +
-        "<div class=\"form-group\">" + 
-            "<label class=\"control-label col-md-2\">Assay Selection</label>" +
-            "<div class=\"col-md-10\">" +
-                @foreach(Assay assay in ViewBag.Assays)
-                {
+                 "</select>" +
+                 "</div>" +
+                 "</div>" +
+                 "<div class=\"form-group\">" +
+                 "<label class=\"control-label col-md-2\">Assay Selection</label>" +
+                 "<div class=\"col-md-10\">" +
+                 @foreach(Assay assay in ViewBag.Assays)
+                 {
                     @: "<label>@assay.AssayName</label>" +
                     @: "<input type=\"checkbox\" name=\"assay_compound[" + counter + "]['assay'][@assay.AssayID]\" class=\"form-check\" />" +
-                }
-            "</div>" +
-        "</div>" +
-        "<div class=\"form-group\">" +
-            "<label for=\"testall_" + counter + "\" class=\"control-label col-md-2\">Proceed with all tests?</label>" +
-            "<div class=\"col-md-10\">" +
-                "<input type=\"checkbox\" name=\"assay_compound[" + counter + "]['testall']\" id=\"testall_0\" />" +
-            "</div>" +
-        "</div>" +
-        "<div class=\"form-group\">" +
-            "<label for=\"quantity_" + counter + "\" class=\"control-label col-md-2\">Quantity</label>" +
-            "<div class=\"col-md-10\">" +
-                "<input type=\"number\" step=\"any\" name=\"assay_compound[" + counter + "]['quantity']\" id=\"quantity_" + counter + "\" />" +
-            "</div>" +
-        "</div>" +
-        "<div class=\"form-group\">" +
-            "<label for=\"weight_" + counter + "\" class=\"control-label col-md-2\">Weight (mg)</label>" +
-            "<div class=\"col-md-10\">" +
-                "<input type=\"number\" step=\"any\" name=\"assay_compound[" + counter + "]['client_weight']\" id=\"weight_" + counter + "\" />" +
-            "</div>" +
-        "</div>");
+                 }
+                 "</div>" +
+                 "</div>" +
+                 "<div class=\"form-group\">" +
+                 "<label for=\"testall_" + counter + "\" class=\"control-label col-md-2\">Proceed with all tests?</label>" +
+                 "<div class=\"col-md-10\">" +
+                 "<input type=\"checkbox\" name=\"assay_compound[" + counter + "]['testall']\" id=\"testall_0\" />" +
+                 "</div>" +
+                 "</div>" +
+                 "<div class=\"form-group\">" +
+                 "<label for=\"quantity_" + counter + "\" class=\"control-label col-md-2\">Quantity</label>" +
+                 "<div class=\"col-md-10\">" +
+                 "<input type=\"number\" step=\"any\" name=\"assay_compound[" + counter + "]['quantity']\" id=\"quantity_" + counter + "\" />" +
+                 "</div>" +
+                 "</div>" +
+                 "<div class=\"form-group\">" +
+                 "<label for=\"weight_" + counter + "\" class=\"control-label col-md-2\">Weight (mg)</label>" +
+                 "<div class=\"col-md-10\">" +
+                 "<input type=\"number\" step=\"any\" name=\"assay_compound[" + counter + "]['client_weight']\" id=\"weight_" + counter + "\" />" +
+                 "</div>" +
+                 "</div>");
 
-         counter++;
+             counter++;
+         } else {
+             $("#five-compounds").removeClass("hidden");
+         }
      });
 </script>
 }
