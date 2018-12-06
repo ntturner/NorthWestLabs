@@ -32,7 +32,7 @@ namespace WebApplication1.Models
         public decimal? Quantity { get; set; }
         public DateTime? DateArrived { get; set; }
         public string ReceivedBy { get; set; }
-        public DateTime DateDue { get; set; }
+        public DateTime? DateDue { get; set; }
         public string Appearance { get; set; }
         public decimal? ActualWeight { get; set; }
         public decimal? ClientWeight { get; set; }
@@ -51,7 +51,8 @@ namespace WebApplication1.Models
             Assay = assay;
             TestAll = test;
             DateDue = datedue;
-        }public Compound_Assay()
+        }
+        public Compound_Assay()
         {
 
         }
