@@ -31,7 +31,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.QuotedPrice)
+            $@Html.DisplayFor(model => model.QuotedPrice)
         </dd>
 
         <dt>
@@ -39,7 +39,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ActualPrice)
+            $@Html.DisplayFor(model => model.ActualPrice)
         </dd>
 
         <dt>
@@ -65,6 +65,4 @@
     @Html.ActionLink("Back to List", "Index")
 </p>
 
-<br />
-<br />
-<a href="@Url.Action("Index", "Singapore")" class="btn btn-lg btn-danger">Return to Home Page</a>
+

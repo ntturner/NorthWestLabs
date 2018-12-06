@@ -21,24 +21,25 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AssayName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Duration) days
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Protocol)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AssayID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AssayID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AssayID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssayName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration) days
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Protocol)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.AssayID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.AssayID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.AssayID })
+            </td>
+        </tr>
+    }
 
 </table>
 <p>
@@ -46,5 +47,4 @@
 </p>
 <br />
 <br />
-
-<a href="@Url.Action("Index", "Singapore")" class="btn btn-lg btn-danger">Return Home</a>
+<a href="@Url.Action("Index","Singapore")">Back to Home Page</a>

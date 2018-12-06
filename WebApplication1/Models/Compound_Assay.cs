@@ -20,6 +20,7 @@ namespace WebApplication1.Models
         public string LTNumber { get; set; }
         public virtual Compound Compound { get; set; }
 
+        [DisplayName("Sequence Code")]
         public int SequenceNumber { get; set; }
 
         [ForeignKey("WorkOrder")]

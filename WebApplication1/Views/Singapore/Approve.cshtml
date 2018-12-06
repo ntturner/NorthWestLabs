@@ -4,11 +4,8 @@
      ViewBag.Title = "Approve";
 }
 
-<h2>Approve</h2>
+<h2>Approve Pending Work Orders</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -53,7 +50,7 @@
                     @Html.DisplayFor(modelItem => item.Comments)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Approved)
+                    Pending Approval
                 </td>
                 <td>
                     | @Html.ActionLink("Approve", "Approved", new { id = item.OrderID }) |
@@ -64,4 +61,7 @@
     }
 
 </table>
+<br />
+<br />
+<a href="@Url.Action("Index","Singapore")">Back to Home Page</a>
 

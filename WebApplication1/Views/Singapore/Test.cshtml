@@ -19,22 +19,19 @@
             @Html.DisplayNameFor(model => model.SequenceNumber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.WorkOrder.Comments)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.TestAll)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Quantity)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateArrived)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.DateDue)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Status.StatusDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Results)
         </th>
         <th></th>
     </tr>
@@ -53,9 +50,6 @@
         <td style="text-align:center">
             @Html.DisplayFor(modelItem => item.SequenceNumber)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WorkOrder.Comments)
-        </td>
         @if (item.TestAll == 0)
         {
             <td>Test all</td>
@@ -66,9 +60,6 @@
         }
         <td>
             @Html.DisplayFor(modelItem => item.Quantity) mg
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateArrived)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateDue)
@@ -86,8 +77,11 @@
             <td>Complete</td>
         }
         <td>
-            <a href="@Url.Action("Edit", "Singapore", new { id=item.LineID})">Edit</a> 
-            <a href="@Url.Action("Details", "Singapore", new { id=item.LineID})">Details</a>   
+            <a href="#">@Html.DisplayFor(modelItem => item.Results)</a>
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "Singapore", new { id=item.LineID})">Edit</a>
+            <a href="@Url.Action("Details", "Singapore", new { id=item.LineID})">Details</a>
         </td>
     </tr>
         }
@@ -96,4 +90,6 @@
 
 </table>
 
-<a href="@Url.Action("Index", "Singapore")" class="btn btn-lg btn-danger">Return Home</a>
+<br />
+<br />
+<a href="@Url.Action("Index","Singapore")">Back to Home Page</a>

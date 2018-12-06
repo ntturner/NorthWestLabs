@@ -92,7 +92,7 @@ namespace WebApplication1.Controllers
             {
                 db.Entry(work_Order).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("WorkOrder","Singapore");
             }
             ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerFirstName", work_Order.CustomerID);
             ViewBag.StatusID = new SelectList(db.Statuses, "StatusID", "StatusDescription", work_Order.StatusID);

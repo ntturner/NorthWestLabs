@@ -199,7 +199,7 @@
     <Compile Include="Controllers\InvoicesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MaterialsController.cs" />
-    <Compile Include="Controllers\SeattleController.cs" />  
+    <Compile Include="Controllers\SeattleController.cs" />
     <Compile Include="Controllers\SingaporeController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\TestsController.cs" />
@@ -240,10 +240,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\Approved.png" />
+    <Content Include="Pictures\Lab header.jpg" />
+    <Content Include="Pictures\Man with microscope.jpg" />
     <Content Include="Pictures\Materials.png" />
+    <Content Include="Pictures\Microscopes.jpg" />
     <Content Include="Pictures\Modify.png" />
+    <Content Include="Pictures\pouring chemicals.jpg" />
     <Content Include="Pictures\Schedule.png" />
     <Content Include="Pictures\Test.png" />
+    <Content Include="Pictures\Testing.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -408,6 +413,7 @@
     <Content Include="Views\Singapore\WorkOrder.cshtml" />
     <Content Include="Views\Singapore\ViewAll.cshtml" />
     <Content Include="Views\Singapore\Search.cshtml" />
+    <Content Include="Views\Singapore\result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

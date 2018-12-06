@@ -163,7 +163,11 @@ namespace WebApplication1.Controllers
                 ViewBag.search = "No work order associated with that customer was found.";
                 return View();
             }
-            return View("Details","Work_Order",work_Order);
+            return View("result",work_Order);
+        }
+        public ActionResult result()
+        {
+            return View();
         }
     }
 }
