@@ -47,9 +47,10 @@ namespace WebApplication1.Controllers
 
                 //Get lists that will drive loops.
                 List<Assay> assays = db.Assays.ToList();
-                List<Compound> compLoop = db.Compounds.ToList();
+                //This could be used to drive the base loop, but for now we want to limit work order to 5 compounds.
+                //List<Compound> compLoop = db.Compounds.ToList();
 
-                for (int iCount = 0; iCount < compLoop.Count; iCount++)
+                for (int iCount = 0; iCount < 5; iCount++)
                 {
                     //Make sure that there are actually compounds on the request form.
                     if(Request.Form["assay_compound[" + iCount + "]['compound']"] != null)
@@ -104,6 +105,12 @@ namespace WebApplication1.Controllers
                             }
                         }
                     } 
+                }
+
+                //Verify that only 5 compounds were submitted on the work order.
+                if(Request.Form["assay_compound[5]['compound']"] != null)
+                {
+                    //Tell user that additional compounds were not processed.
                 }
             }
             
