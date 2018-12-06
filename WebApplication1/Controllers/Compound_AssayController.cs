@@ -23,7 +23,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Compound_Assay/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -52,7 +52,7 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LTNumber,SequenceNumber,OrderID,AssayID,TestAll,Quantity,DateArrived,ReceivedBy,DateDue,Appearance,ActualWeight,ClientWeight,MolecularMass,MTD,StatusID")] Compound_Assay compound_Assay)
+        public ActionResult Create([Bind(Include = "LineID,LTNumber,SequenceNumber,OrderID,AssayID,TestAll,Quantity,DateArrived,ReceivedBy,DateDue,Appearance,ActualWeight,ClientWeight,MolecularMass,MTD,StatusID,Results")] Compound_Assay compound_Assay)
         {
             if (ModelState.IsValid)
             {
@@ -69,7 +69,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Compound_Assay/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -92,7 +92,7 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LTNumber,SequenceNumber,OrderID,AssayID,TestAll,Quantity,DateArrived,ReceivedBy,DateDue,Appearance,ActualWeight,ClientWeight,MolecularMass,MTD,StatusID")] Compound_Assay compound_Assay)
+        public ActionResult Edit([Bind(Include = "LineID,LTNumber,SequenceNumber,OrderID,AssayID,TestAll,Quantity,DateArrived,ReceivedBy,DateDue,Appearance,ActualWeight,ClientWeight,MolecularMass,MTD,StatusID,Results")] Compound_Assay compound_Assay)
         {
             if (ModelState.IsValid)
             {
@@ -108,7 +108,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Compound_Assay/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -125,7 +125,7 @@ namespace WebApplication1.Controllers
         // POST: Compound_Assay/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Compound_Assay compound_Assay = db.Compound_Assays.Find(id);
             db.Compound_Assays.Remove(compound_Assay);

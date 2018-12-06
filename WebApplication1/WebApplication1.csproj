@@ -239,6 +239,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\Approved.png" />
+    <Content Include="Pictures\Materials.png" />
+    <Content Include="Pictures\Modify.png" />
     <Content Include="Pictures\Schedule.png" />
     <Content Include="Pictures\Test.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -396,6 +398,13 @@
     <Content Include="Views\Work_Order\Edit.cshtml" />
     <Content Include="Views\Work_Order\Index.cshtml" />
     <Content Include="Views\Singapore\WeeklyTest.cshtml" />
+    <Content Include="Views\Singapore\Details.cshtml" />
+    <Content Include="Views\Singapore\Edit.cshtml" />
+    <Content Include="Views\Singapore\MaterialsInventory.cshtml" />
+    <Content Include="Views\Singapore\OrderMaterials.cshtml" />
+    <Content Include="Views\Singapore\WorkOrder.cshtml" />
+    <Content Include="Views\Singapore\ViewAll.cshtml" />
+    <Content Include="Views\Singapore\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

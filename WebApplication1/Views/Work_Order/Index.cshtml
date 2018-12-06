@@ -4,15 +4,24 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Work Orders</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Customer.CustomerFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.CustomerLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Approved)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Status.StatusDescription)
@@ -23,41 +32,53 @@
         <th>
             @Html.DisplayNameFor(model => model.ActualPrice)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comments)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Approved)
-        </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customer.CustomerFirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status.StatusDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QuotedPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ActualPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comments)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Approved)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.CustomerFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.CustomerLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.PhoneNumber)
+            </td>
+            @if (item.Approved==1)
+            {
+            <td>
+                Approved
+            </td>
+            }
+            else
+            {
+            <td>
+                Not approved
+            </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Status.StatusDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuotedPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualPrice)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.OrderID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.OrderID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<a href="@Url.Action("Index", "Singapore")" class="btn btn-lg btn-danger">Return Home</a>

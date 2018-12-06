@@ -22,6 +22,7 @@ namespace WebApplication1.Models
         public int TestID { get; set; }
         public virtual Test Test { get; set; }
 
-        public int? TestRequired { get; set; }
+        [DisplayName("Test required or conditional")]
+        public byte? TestRequired { get; set; }
     }
 }

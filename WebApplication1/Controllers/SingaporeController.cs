@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.DAL;
@@ -11,6 +13,8 @@ namespace WebApplication1.Controllers
     public class SingaporeController : Controller
     {
         private NorthWestContext db = new NorthWestContext();
+        public static DateTime begin;
+        public static DateTime end;
         // GET: Singapore
         public ActionResult Index()
         {
@@ -40,17 +44,10 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult Schedule(DateTime begindate, DateTime enddate)
         {
-            ViewBag.begin = begindate;
-            ViewBag.end = enddate;
-            //List<Compound_Assay> lcompound_Assays = new List<Compound_Assay>();
-            //var compound_Assays = db.Database.SqlQuery<Compound_Assay>("USE NorthWestLabs SELECT CA.OrderID, CA.LTNumber, CA.SequenceNumber, CA.AssayID, CA.TestAll, CA.DateDue " +
-            //    "FROM Work_Order WO INNER JOIN Compound_Assay CA" +"    ON WO.OrderID = CA.OrderID " +
-            //    "WHERE DateDue BETWEEN CAST('"+ begindate +"' as datetime) AND CAST('"+ enddate +"' as datetime)");
-            //foreach (var item in compound_Assays)
-            //{
-            //    lcompound_Assays.Add(new Compound_Assay(item.OrderID, item.LTNumber, item.SequenceNumber, item.Assay, item.TestAll, item.DateDue));
-            //}
-            //ViewBag.compound = lcompound_Assays;
+            begin = begindate;
+            end = enddate;
+            ViewBag.begin = begin;
+            ViewBag.end = end;
             var compound_Assays = db.Compound_Assays;
             return View("WeeklyTest", compound_Assays.ToList());
         }
@@ -62,7 +59,111 @@ namespace WebApplication1.Controllers
 
         public ActionResult Test()
         {
+            ViewBag.begin = begin;
+            ViewBag.end = end;
+            var compound_Assays = db.Compound_Assays;
+            return View(compound_Assays.ToList());
+        }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Compound_Assay compound_Assay = db.Compound_Assays.Find(id);
+            if (compound_Assay == null)
+            {
+                return HttpNotFound();
+            }
+            return View(compound_Assay);
+        }
+
+        // GET: Compound_Assay/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Compound_Assay compound_Assay = db.Compound_Assays.Find(id);
+            if (compound_Assay == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.AssayID = new SelectList(db.Assays, "AssayID", "AssayName", compound_Assay.AssayID);
+            ViewBag.LTNumber = new SelectList(db.Compounds, "LTNumber", "CompoundName", compound_Assay.LTNumber);
+            ViewBag.StatusID = new SelectList(db.Statuses, "StatusID", "StatusDescription", compound_Assay.StatusID);
+            ViewBag.OrderID = new SelectList(db.WorkOrders, "OrderID", "Comments", compound_Assay.OrderID);
+            return View(compound_Assay);
+        }
+
+        // POST: Compound_Assay/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ListID,LTNumber,SequenceNumber,OrderID,AssayID,TestAll,Quantity,DateArrived,ReceivedBy,DateDue,Appearance,ActualWeight,ClientWeight,MolecularMass,MTD,StatusID,Results")] Compound_Assay compound_Assay)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(compound_Assay).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Test");
+            }
+            ViewBag.AssayID = new SelectList(db.Assays, "AssayID", "AssayName", compound_Assay.AssayID);
+            ViewBag.LTNumber = new SelectList(db.Compounds, "LTNumber", "CompoundName", compound_Assay.LTNumber);
+            ViewBag.StatusID = new SelectList(db.Statuses, "StatusID", "StatusDescription", compound_Assay.StatusID);
+            ViewBag.OrderID = new SelectList(db.WorkOrders, "OrderID", "Comments", compound_Assay.OrderID);
+            return View(compound_Assay);
+        }
+
+        public ActionResult MaterialsInventory()
+        {
+            return View(db.Materials.ToList());
+        }
+
+        public ActionResult OrderMaterials(int? id)
+        {
+            Materials materials = db.Materials.Find(id);
+            return View(materials);
+        }
+
+        public ActionResult WorkOrder()
+        {
             return View();
+        }
+
+        public ActionResult ViewAll()
+        {
+
+            return RedirectToAction("Index", "Work_Order");
+        }
+
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Search(string firstname, string lastname)
+        {
+            var id = 0;
+            IEnumerable<Work_Order> work_Orders = db.Database.SqlQuery<Work_Order>("SELECT * " +
+                "FROM Work_Order WO inner join Customer C ON Wo.CustomerID = C.CustomerID " +
+                "WHERE C.CustomerFirstName = '" + firstname + "' AND C.CustomerLastName = '" + lastname+"' " +
+                "AND WO.StatusID = 1");
+            foreach (Work_Order item in work_Orders)
+            {
+                id = item.OrderID;
+            }
+            Work_Order work_Order = db.WorkOrders.Find(id);
+            if (work_Orders==null)
+            {
+                ViewBag.search = "No work order associated with that customer was found.";
+                return View();
+            }
+            return View("Details","Work_Order",work_Order);
         }
     }
 }

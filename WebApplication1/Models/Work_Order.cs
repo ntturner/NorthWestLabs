@@ -20,8 +20,12 @@ namespace WebApplication1.Models
         public int? CustomerID { get; set; }
         public virtual Customer Customer { get; set; }
 
+        [DisplayName("Quoted Price")]
         public decimal? QuotedPrice { get; set; }
+
+        [DisplayName("Actual Price")]
         public decimal? ActualPrice { get; set; }
+
         public string Comments { get; set; }
 
         public int? StatusID { get; set; }

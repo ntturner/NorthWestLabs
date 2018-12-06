@@ -16,7 +16,10 @@ namespace WebApplication1.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaterialID { get; set; }
 
+        [DisplayName("Material Description")]
         public string MaterialDescription { get; set; }
-        public double QuantityOnHand { get; set; }
+
+        [DisplayName("Quantity on hand")]
+        public decimal? QuantityOnHand { get; set; }
     }
 }
