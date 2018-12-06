@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebApplication1.Models.Work_Order>
+@using WebApplication1.Models;
+@{
+    ViewBag.Title = "MyOrders";
+}
+
+<h2>My Work Order Requests</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Order No.</th>
+            <th>Approved?</th>
+            <th>Status</th>
+            <th>Quote</th>
+            <th>Final Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var wo in Model)
+        {
+            <tr>
+                <td>@wo.OrderID</td>
+                @if(wo.Approved == 0)
+                {
+                    <td>Awaiting</td>
+                }
+                else if(wo.Approved == 1)
+                {
+                    <td>Approved</td>
+                }
+                else
+                {
+                    <td>Denied</td>
+                }
+                <td>@wo.Status.StatusDescription</td>
+                <td>@wo.QuotedPrice</td>
+                <td>@wo.ActualPrice</td>
+            </tr>
+        }
+    </tbody>
+</table>

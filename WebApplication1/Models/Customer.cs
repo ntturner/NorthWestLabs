@@ -34,5 +34,6 @@ namespace WebApplication1.Models
 
 
         public double? Balance { get; set; }
+        public string UserID { get; set; }
     }
 }

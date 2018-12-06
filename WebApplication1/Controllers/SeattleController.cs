@@ -131,11 +131,21 @@ namespace WebApplication1.Controllers
             return View(assay_Tests.ToList());
         }
 
+        [Authorize]
         public ActionResult MyOrders()
         {
-            Customer cust_user = db.Customers.Single(x => x.UserID == User.Identity.GetUserId());
-            List<Work_Order> workOrders = db.WorkOrders.Where(x => x.CustomerID == cust_user.CustomerID).ToList();
-            return View(workOrders);
+            string user_id = User.Identity.GetUserId();
+            Customer cust_user = db.Customers.Single(x => x.UserID == user_id);
+            if(cust_user != null)
+            {
+                var workOrders = db.WorkOrders.Where(w => w.CustomerID == cust_user.CustomerID).Include(w => w.Customer).Include(w => w.Status);
+                return View(workOrders.ToList());
+            }
+            else
+            {
+                ViewBag.Message = "Uh oh, we were unable to find you in our customer database! Please contact support.";
+                return View();
+            }
         }
     }
 }
