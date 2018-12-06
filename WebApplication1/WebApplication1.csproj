@@ -199,6 +199,7 @@
     <Compile Include="Controllers\InvoicesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MaterialsController.cs" />
+    <Compile Include="Controllers\SeattleController.cs" />  
     <Compile Include="Controllers\SingaporeController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\TestsController.cs" />
@@ -397,6 +398,8 @@
     <Content Include="Views\Work_Order\Details.cshtml" />
     <Content Include="Views\Work_Order\Edit.cshtml" />
     <Content Include="Views\Work_Order\Index.cshtml" />
+    <Content Include="Views\Seattle\Quote.cshtml" />
+    <Content Include="Views\Seattle\RequestForm.cshtml" />
     <Content Include="Views\Singapore\WeeklyTest.cshtml" />
     <Content Include="Views\Singapore\Details.cshtml" />
     <Content Include="Views\Singapore\Edit.cshtml" />
