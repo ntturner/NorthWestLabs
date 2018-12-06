@@ -20,9 +20,14 @@ namespace WebApplication1.Models
         public int OrderID { get; set; }
         public virtual Work_Order WorkOrder { get; set; }
 
+        [DisplayName("Due Date")]
         public DateTime DateDue { get; set; }
-        public double Amount { get; set; }
+        public decimal? Amount { get; set; }
+
+        [DisplayName("Early Date")]
         public DateTime EarlyDate { get; set; }
+
+        [DisplayName("Early Discount")]
         public string EarlyDiscount { get; set; }
     }
 }

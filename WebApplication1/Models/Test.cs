@@ -15,11 +15,20 @@ namespace WebApplication1.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TestID { get; set; }
+
+        [DisplayName("Test Description")]
         public string TestDescription { get; set; }
+
         public string Protocol { get; set; }
-        public double? WageCost { get; set; }
-        public double? TotalMaterialsCost { get; set; }
-        public double? OverallCost { get; set; }
+
+        [DisplayName("Labor Cost")]
+        public decimal? WageCost { get; set; }
+
+        [DisplayName("Materials Cost")]
+        public decimal? TotalMaterialsCost { get; set; }
+
+        [DisplayName("Overall Cost")]
+        public decimal? OverallCost { get; set; }
 
 
     }

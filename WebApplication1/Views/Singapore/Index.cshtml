@@ -45,10 +45,6 @@
         }
     </style>
 </head>
-<h2>Index</h2>
-
-<h2>Opacity with Box</h2>
-<p>Hover over the image to see the effect.</p>
 
 <div class="row">
     <div class="cont">
@@ -78,12 +74,31 @@
         </a>
     </div>
     <div class="cont">
-        <a href="@Url.Action("#","Singapore")">
-            <img src="~/Pictures/Test.png" alt="Avatar" class="image img-thumbnail" style="width:100%">
+        <a href="@Url.Action("Index","Assays")">
+            <img src="~/Pictures/Modify.png" alt="Avatar" class="image img-thumbnail" style="width:100%">
             <div class="middle">
-                <div class="text">Other link</div>
+                <div class="text">Modify Assays</div>
             </div>
         </a>
     </div>
 </div>
+<div class="row">
+    <div class="cont">
+        <a href="@Url.Action("MaterialsInventory","Singapore")">
+            <img src="~/Pictures/Materials.png" alt="Avatar" class="image img-thumbnail" style="width:100%">
+            <div class="middle">
+                <div class="text">Check Materials Inventory</div>
+            </div>
+        </a>
+    </div>
+    <div class="cont">
+        <a href="@Url.Action("WorkOrder","Singapore")">
+            <img src="~/Pictures/Test.png" alt="Avatar" class="image img-thumbnail" style="width:100%">
+            <div class="middle">
+                <div class="text">Work Order stuff</div>
+            </div>
+        </a>
+    </div>
+</div>
+
 

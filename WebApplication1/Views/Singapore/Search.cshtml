@@ -1,0 +1,19 @@
+﻿@model WebApplication1.Models.Work_Order
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Find Work Order</h2>
+<p>fill the customer information below, to find their Work Order</p>
+
+<form method="post">
+    First name:<br>
+    <input type="text" name="firstname" placeholder="John" >
+    <br>
+    Last name:<br>
+    <input type="text" name="lastname" placeholder="Smith">
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
+

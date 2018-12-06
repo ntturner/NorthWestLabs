@@ -16,6 +16,7 @@ namespace WebApplication1.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AssayID { get; set; }
 
+        [DisplayName("Assay Name")]
         public string AssayName { get; set; }
         public int? Duration { get; set; }
         public string Protocol { get; set; }

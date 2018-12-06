@@ -1,8 +1,99 @@
-﻿@model WebApplication1.Models.Compound_Assay
+﻿@model IEnumerable<WebApplication1.Models.Compound_Assay>
 
 @{
-    ViewBag.Title = "Test";
+    ViewBag.Title = "Index";
 }
 
-<h2>Test</h2>
+<h2>Displaying Assay Tests that need to be performed within week: <p>@ViewBag.begin - @ViewBag.end</p></h2>
 
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Assay.AssayName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LTNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SequenceNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkOrder.Comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestAll)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateArrived)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.StatusDescription)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.WorkOrder.Approved == 0 && (item.DateDue >= ViewBag.begin && item.DateDue <= ViewBag.end))
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assay.AssayName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LTNumber)
+        </td>
+        <td style="text-align:center">
+            @Html.DisplayFor(modelItem => item.SequenceNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkOrder.Comments)
+        </td>
+        @if (item.TestAll == 0)
+        {
+            <td>Test all</td>
+        }
+        else if (item.TestAll == 1)
+        {
+            <td>Do not test all</td>
+        }
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity) mg
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateArrived)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateDue)
+        </td>
+        @if (item.StatusID == 1)
+        {
+            <td>Incomplete</td>
+        }
+        @if (item.StatusID == 2)
+        {
+            <td>In Progress</td>
+        }
+        @if (item.StatusID == 3)
+        {
+            <td>Complete</td>
+        }
+        <td>
+            <a href="@Url.Action("Edit", "Singapore", new { id=item.LineID})">Edit</a> 
+            <a href="@Url.Action("Details", "Singapore", new { id=item.LineID})">Details</a>   
+        </td>
+    </tr>
+        }
+
+    }
+
+</table>
+
+<a href="@Url.Action("Index", "Singapore")" class="btn btn-lg btn-danger">Return Home</a>

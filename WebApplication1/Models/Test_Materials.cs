@@ -22,7 +22,10 @@ namespace WebApplication1.Models
         public int MaterialID { get; set; }
         public virtual Materials Materials { get; set; }
 
-        public double? QuantityUsed { get; set; }
-        public double? MaterialsCost { get; set; }
+        [DisplayName("Quantity Used")]
+        public decimal? QuantityUsed { get; set; }
+
+        [DisplayName("Materials Cost")]
+        public decimal? MaterialsCost { get; set; }
     }
 }

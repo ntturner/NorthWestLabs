@@ -43,14 +43,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SequenceNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SequenceNumber)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.TestAll)
         </dt>
 
@@ -141,6 +133,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.LineID }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Edit", "Singapore", new { id=Model.LTNumber, sequence = Model.SequenceNumber })">Edit</a>
+    <a href="@Url.Action("Test", "Singapore")">Back to tests</a>
 </p>
+
+

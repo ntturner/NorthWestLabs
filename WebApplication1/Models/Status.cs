@@ -16,6 +16,7 @@ namespace WebApplication1.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int StatusID { get; set; }
 
+        [DisplayName("Status Description")]
         public string StatusDescription { get; set; }
     }
 }

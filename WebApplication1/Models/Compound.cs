@@ -14,6 +14,8 @@ namespace WebApplication1.Models
     {
         [Key]
         public string LTNumber { get; set; }
+
+        [DisplayName("Compound Name")]
         public string CompoundName { get; set; }
     }
 }

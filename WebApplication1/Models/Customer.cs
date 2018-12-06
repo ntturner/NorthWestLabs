@@ -25,6 +25,7 @@ namespace WebApplication1.Models
         public string CustomerLastName { get; set; }
 
         [Required(ErrorMessage = "Please enter your phone number")]
+        [DisplayName("Phone Number")]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Please enter your email")]

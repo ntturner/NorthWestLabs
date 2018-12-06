@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<WebApplication1.Models.Assay>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Assays";
 }
 
-<h2>Index</h2>
+<h2>Assays</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -29,7 +27,7 @@
             @Html.DisplayFor(modelItem => item.AssayName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Duration)
+            @Html.DisplayFor(modelItem => item.Duration) days
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Protocol)
@@ -43,3 +41,10 @@
 }
 
 </table>
+<p>
+    @Html.ActionLink("Create New Assay", "Create")
+</p>
+<br />
+<br />
+
+<a href="@Url.Action("Index", "Singapore")" class="btn btn-lg btn-danger">Return Home</a>

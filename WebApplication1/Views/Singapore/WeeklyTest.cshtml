@@ -4,9 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-@ViewBag.begin
-@ViewBag.end
+<h2>Displaying Assay Tests that need to be performed within week: <p>@ViewBag.begin - @ViewBag.end</p></h2>
+
 
 <table class="table">
     <tr>
@@ -51,35 +50,46 @@
         <td>
             @Html.DisplayFor(modelItem => item.LTNumber)
         </td>
-        <td>
+        <td style="text-align:center">
             @Html.DisplayFor(modelItem => item.SequenceNumber)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.WorkOrder.Comments)
         </td>
-            @if (item.TestAll == 0)
-            {
-                <td>Test all</td>
-            }
-            else if (item.TestAll == 1)
-            {
-                <td>Do not test all</td>
-            }
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity) mg
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateArrived)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateDue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status.StatusDescription)
-            </td>
-        </tr>
+        @if (item.TestAll == 0)
+        {
+            <td>Test all</td>
+        }
+        else if (item.TestAll == 1)
+        {
+            <td>Do not test all</td>
+        }
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity) mg
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateArrived)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateDue)
+        </td>
+        @if (item.StatusID == 1)
+        {
+            <td>Incomplete</td>
+        }
+        @if (item.StatusID == 2)
+        {
+            <td>In Progress</td>
+        }
+        @if (item.StatusID == 3)
+        {
+            <td>Complete</td>
+        }
+    </tr>
         }
         
     }
 
 </table>
+
+<a href="@Url.Action("Index", "Singapore")" class="btn btn-lg btn-danger">Return Home</a>
