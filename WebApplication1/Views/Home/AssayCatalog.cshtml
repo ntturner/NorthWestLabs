@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WebApplication1.Models.Assay>
+
+@{
+    ViewBag.Title = "Assays";
+    int counter = 1;
+}
+<div class="jumbotron" style="background-image:url('../../Pictures/scientist testing.jpg');background-size:cover; min-height:300px">
+    </div>
+<p>Click on the Assay below and learn more about each one</p>
+<br />
+<div class="accordion" id="assay-accordion">
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <div class="card-header" id="heading-@counter">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse-@counter" aria-expanded="true" aria-controls="collapse-@counter">
+                        @Html.DisplayFor(modelItem => item.AssayName)
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapse-@counter" class="collapse" aria-labelledby="heading-@counter" data-parent="#assay-accordion">
+                <div class="card-body">
+                    <p>@Html.DisplayNameFor(model => model.Protocol):</p>
+                    <p>@Html.DisplayFor(modelItem => item.Protocol)</p>
+                </div>
+            </div>
+        </div>
+        counter++;
+    }
+</div>
+<br />
+<br />
+<a href="@Url.Action("Index","Home")">Back to Home Page</a>
+
+

@@ -1,59 +1,31 @@
-﻿@{
+﻿@model WebApplication1.Models.Contact
+
+@{
     ViewBag.Title = "Contact";
 }
-<head>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        input[type=text], select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-top: 6px;
-            margin-bottom: 16px;
-            resize: vertical;
-        }
-
-        input[type=submit] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-            input[type=submit]:hover {
-                background-color: #45a049;
-            }
-
-        .container {
-            border-radius: 5px;
-            background-color: #f2f2f2;
-            padding: 20px;
-        }
-    </style>
-</head>
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
+<h3>Address</h3>
 <address>
-    NorthLabs Drive<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
+    NorthWest Labs drive
+    Seattle, Washington
 </address>
+<h3>Phone Number:</h3>
+<p>1-800-123-4567</p>
+<div class="container">
+    <div class="jumbotron">
+        <h5>If you have a question and would like to reach out to our Customer Representatives, please fill out the form below:</h5>
+        <br />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <p>First Name: @Html.TextBoxFor(x => x.firstName)</p>
+            <p>Last Name: @Html.TextBoxFor(x => x.LastName)</p>
+            <p>Phone Number: @Html.TextBoxFor(x => x.PhoneNumber)</p>
+            <p>Email: @Html.TextBoxFor(x => x.Email)</p>
+            <p>Question: @Html.TextBoxFor(x => x.Question)</p>
 
-<address>
-    <strong>Support:</strong>   <a href="#">CustomerSupport@NorthWestLabs.com</a><br />
-</address>
+            <input type="submit" value="Send Question" />
+        }
+    </div>
 
-<h2>If you have any questions and you would like to contact one of our Customer Representatives, please fill out the form below:</h2>
+</div>

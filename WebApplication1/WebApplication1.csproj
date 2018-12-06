@@ -214,6 +214,7 @@
     <Compile Include="Models\Assay_Test.cs" />
     <Compile Include="Models\Compound.cs" />
     <Compile Include="Models\Compound_Assay.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Invoice.cs" />
@@ -240,13 +241,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pictures\Approved.png" />
+    <Content Include="Pictures\Archived.png" />
     <Content Include="Pictures\Lab header.jpg" />
     <Content Include="Pictures\Man with microscope.jpg" />
     <Content Include="Pictures\Materials.png" />
     <Content Include="Pictures\Microscopes.jpg" />
     <Content Include="Pictures\Modify.png" />
     <Content Include="Pictures\pouring chemicals.jpg" />
+    <Content Include="Pictures\Question.png" />
+    <Content Include="Pictures\reports.png" />
     <Content Include="Pictures\Schedule.png" />
+    <Content Include="Pictures\scientist testing.jpg" />
+    <Content Include="Pictures\Search.png" />
     <Content Include="Pictures\Test.png" />
     <Content Include="Pictures\Testing.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -308,7 +314,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -414,6 +419,9 @@
     <Content Include="Views\Singapore\ViewAll.cshtml" />
     <Content Include="Views\Singapore\Search.cshtml" />
     <Content Include="Views\Singapore\result.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Confirmation.cshtml" />
+    <Content Include="Views\Home\AssayCatalog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
