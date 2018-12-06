@@ -1,15 +1,11 @@
 ﻿@model IEnumerable<WebApplication1.Models.Assay_Test>
 @using WebApplication1.Models;
 @{
-    ViewBag.Title = "Quote";
+    ViewBag.Title = "Price Information";
     int counter = 1;
 }
 
-<h2>Quote</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Quote Estimation Information</h2>
 
 <div class="accordion" id="assay-accordion">
     @foreach(Assay assay in ViewBag.Assays)

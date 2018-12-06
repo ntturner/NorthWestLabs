@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -41,7 +42,9 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 //Add new work order to database. It will have lots of null values because it is pending approval.
+                var incomplete = db.Statuses.Single(x => x.StatusDescription == "Incomplete");
                 workOrder.Approved = 0;
+                workOrder.StatusID = incomplete.StatusID;
                 db.WorkOrders.Add(workOrder);
                 db.SaveChanges();
 
@@ -126,6 +129,13 @@ namespace WebApplication1.Controllers
             var assay_Tests = db.Assay_Tests.Include(a => a.Assay).Include(a => a.Test);
 
             return View(assay_Tests.ToList());
+        }
+
+        public ActionResult MyOrders()
+        {
+            Customer cust_user = db.Customers.Single(x => x.UserID == User.Identity.GetUserId());
+            List<Work_Order> workOrders = db.WorkOrders.Where(x => x.CustomerID == cust_user.CustomerID).ToList();
+            return View(workOrders);
         }
     }
 }
