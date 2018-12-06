@@ -110,5 +110,13 @@ namespace WebApplication1.Controllers
 
             return RedirectToAction("RequestForm");
         }
+
+        public ActionResult Quote()
+        {
+            List<Assay> assays = db.Assays.ToList();
+            ViewBag.Assays = assays;
+
+            return View();
+        }
     }
 }

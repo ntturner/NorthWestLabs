@@ -398,6 +398,7 @@
     <Content Include="Views\Work_Order\Index.cshtml" />
     <Content Include="Views\Singapore\WeeklyTest.cshtml" />
     <Content Include="Views\Seattle\RequestForm.cshtml" />
+    <Content Include="Views\Seattle\Quote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
