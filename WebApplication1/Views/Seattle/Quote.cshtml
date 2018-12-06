@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebApplication1.Models.Assay_Test>
+@using WebApplication1.Models;
+@{
+    ViewBag.Title = "Quote";
+    int counter = 1;
+}
+
+<h2>Quote</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="accordion">
+    @foreach(Assay assay in ViewBag.Assays)
+    {
+    <div class="card">
+        <div class="card-header" id="heading-@counter">
+            <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse-@counter" aria-expanded="true" aria-controls="collapse-@counter">
+                    @assay.AssayName
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapse-@counter" class="collapse show" aria-labelledby="heading-@counter" data-parent="">
+            <div class="card-body">
+                <table class="table table-success">
+                    <thead>
+                        <tr>
+                            <th>Test</th>
+                            <th>Required?</th>
+                            <th>Labor Cost</th>
+                            <th>Material Cost</th>
+                            <th>Overall Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model){
+                            if(item.AssayID == assay.AssayID)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Test.TestDescription)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.TestRequired)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Test.WageCost)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Test.TotalMaterialsCost)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Test.OverallCost)</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+     </div> 
+        counter++;
+    }
+</div>
+
+
