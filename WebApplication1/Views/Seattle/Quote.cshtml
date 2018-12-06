@@ -25,47 +25,36 @@
 
         <div id="collapse-@counter" class="collapse show" aria-labelledby="heading-@counter" data-parent="">
             <div class="card-body">
-                @{ 
-                    //if(item in Model assayid = assay.assayid)
-                }
+                <table class="table table-success">
+                    <thead>
+                        <tr>
+                            <th>Test</th>
+                            <th>Required?</th>
+                            <th>Labor Cost</th>
+                            <th>Material Cost</th>
+                            <th>Overall Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model){
+                            if(item.AssayID == assay.AssayID)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Test.TestDescription)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.TestRequired)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Test.WageCost)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Test.TotalMaterialsCost)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Test.OverallCost)</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
-    </div> 
-    @counter++;
+     </div> 
+        counter++;
     }
 </div>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Assay.AssayName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Test.TestDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TestRequired)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Assay.AssayName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Test.TestDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TestRequired)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-
-</table>

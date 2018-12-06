@@ -116,7 +116,9 @@ namespace WebApplication1.Controllers
             List<Assay> assays = db.Assays.ToList();
             ViewBag.Assays = assays;
 
-            return View();
+            var assay_Tests = db.Assay_Tests.Include(a => a.Assay).Include(a => a.Test);
+
+            return View(assay_Tests.ToList());
         }
     }
 }
