@@ -199,11 +199,8 @@
     <Compile Include="Controllers\InvoicesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MaterialsController.cs" />
-<<<<<<< HEAD
     <Compile Include="Controllers\SingaporeController.cs" />
-=======
     <Compile Include="Controllers\SeattleController.cs" />
->>>>>>> Adding request form
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="Controllers\Test_MaterialsController.cs" />
@@ -390,7 +387,6 @@
     <Content Include="Views\Status\Details.cshtml" />
     <Content Include="Views\Status\Edit.cshtml" />
     <Content Include="Views\Status\Index.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Singapore\Index.cshtml" />
     <Content Include="Views\Singapore\Approve.cshtml" />
     <Content Include="Views\Singapore\Schedule.cshtml" />
@@ -401,9 +397,7 @@
     <Content Include="Views\Work_Order\Edit.cshtml" />
     <Content Include="Views\Work_Order\Index.cshtml" />
     <Content Include="Views\Singapore\WeeklyTest.cshtml" />
-=======
     <Content Include="Views\Seattle\RequestForm.cshtml" />
->>>>>>> Adding request form
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
