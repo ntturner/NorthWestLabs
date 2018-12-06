@@ -1,0 +1,120 @@
+﻿@using WebApplication1.Models;
+@model WebApplication1.Models.WorkOrder
+@{
+    ViewBag.Title = "Work Order Request";
+    List<Compound> liCompounds = ViewBag.Compounds;
+}
+
+<h2>New Work Order Request</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+<div class="form-horizontal">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div id="add-compound">
+        <div class="form-group">
+            <label for="compound_0" class="control-label col-md-2">Compound</label>
+            <div class="col-md-10">
+                <select name="assay_compound[0]['compound']" id="compound_0">
+                    <option></option>
+                    @foreach (Compound compound in liCompounds)
+                    {
+                        <option value="@compound.LTNumber">@compound.CompoundName</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="testall_0" class="control-label col-md-2">Proceed with all tests?</label>
+            <div class="col-md-10">
+                <input type="checkbox" name="assay_compound[0]['testall']" id="testall_0" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="quantity_0" class="control-label col-md-2">Quantity</label>
+            <div class="col-md-10">
+                <input type="number" name="assay_compound[0]['quantity']" id="quantity_0" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="weight_0" class="control-label col-md-2">Weight</label>
+            <div class="col-md-10">
+                <input type="number" step="any" name="assay_compound[0]['client_weight']" id="weight_0" />
+            </div>
+        </div>
+
+    </div>
+
+    <button class="btn btn-dark" onclick="addCompounds()" type="button"><span class="text-success">+ Add compound</span></button>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Comments, "Comments for work order", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CustomerID, "Customer", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("CustomerID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Submit" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+
+<script>
+     var counter = 1;
+     function addCompounds() {
+         document.getElementById("add-compound").innerHTML = document.getElementById("add-compound").innerHTML + "<div class=\"form-group\">" +
+            "<label for=\"compound_" + counter + "\" class=\"control-label col-md-2\">Compound</label>" +
+            "<div class=\"col-md-10\">" +
+                "<select name=\"assay_compound[" + counter + "]['compound']\" id=\"compound_" + counter + "\">" +
+                    "<option></option>" +
+                    @foreach (Compound compound in ViewBag.Compounds)
+                    {
+                        @: "<option value=\"@compound.LTNumber\">@compound.CompoundName</option>" +
+                    }
+                "</select>" +
+            "</div>" +
+        "</div>" +
+        "<div class=\"form-group\">" +
+            "<label for=\"testall_" + counter + "\" class=\"control-label col-md-2\">Proceed with all tests?</label>" +
+            "<div class=\"col-md-10\">" +
+                "<input type=\"checkbox\" name=\"assay_compound[" + counter + "]['testall']\" id=\"testall_0\" />" +
+            "</div>" +
+        "</div>" +
+        "<div class=\"form-group\">" +
+            "<label for=\"quantity_" + counter + "\" class=\"control-label col-md-2\">Quantity</label>" +
+            "<div class=\"col-md-10\">" +
+                "<input type=\"number\" name=\"assay_compound[" + counter + "]['quantity']\" id=\"quantity_" + counter + "\" />" +
+            "</div>" +
+        "</div>" +
+        "<div class=\"form-group\">" +
+            "<label for=\"weight_" + counter + "\" class=\"control-label col-md-2\">Weight</label>" +
+            "<div class=\"col-md-10\">" +
+                "<input type=\"number\" step=\"any\" name=\"assay_compound[" + counter + "]['client_weight']\" id=\"weight_" + counter + "\" />" +
+            "</div>" +
+        "</div>";
+
+         counter++;
+     }
+</script>
+}
+
