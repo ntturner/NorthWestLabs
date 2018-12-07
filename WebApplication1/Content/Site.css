@@ -22,3 +22,140 @@ textarea {
 .hidden{
     display: none;
 }
+.home-parallax {
+    height: 500px;
+    min-height: 300px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 15%;
+    padding-left: 10%;
+}
+.h-bg{
+    margin: auto;
+    max-width: 250px;
+    height: 110px;;
+    background-color: lightgray;
+    opacity: 0.8;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 25px;
+    border-radius: 10px;
+}
+.home-parallax h1{
+    font-weight: 700;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.appear-head {
+    opacity: 0;
+    -webkit-animation: appear 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation: appear 2s;
+    animation-fill-mode: forwards;
+}
+
+.appear-subhead {
+    opacity: 0;
+    -webkit-animation: appear 2s;
+    -webkit-animation-delay: 1s;
+    -webkit-animation-fill-mode: forwards;
+    animation: appear 2s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.8;
+    }
+}
+
+@-webkit-keyframes appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.8;
+    }
+}
+
+#parallax1 {
+    background-image: url('/Pictures/beakers.jpg');
+}
+#parallax2 {
+    background-image: url('/Pictures/Testing.jpg');
+}
+#parallax3 {
+    background-image: url('/Pictures/Lab header.jpg');
+}
+
+.cont {
+    position: relative;
+    padding: 50px;
+}
+
+.image {
+    opacity: 1;
+    display: block;
+    max-width: 250px;
+    min-width: 100%;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.cont:hover .image {
+    opacity: 0.3;
+}
+
+.cont:hover .middle {
+    opacity: 1;
+}
+
+.hover-fade img {
+    opacity: 1;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.hover-fade .btn-hover {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.hover-fade a:hover img {
+    opacity: 0.3;
+}
+
+.hover-fade a:hover .btn-hover {
+    opacity: 1;
+}
+
+.text {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+}
