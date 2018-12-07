@@ -10,6 +10,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize]
     public class SingaporeController : Controller
     {
         private NorthWestContext db = new NorthWestContext();
