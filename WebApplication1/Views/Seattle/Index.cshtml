@@ -1,8 +1,112 @@
-﻿
+﻿<!--
 @{
     ViewBag.Title = "Portal";
 }
 
 <h2>User Portal</h2>
 
-@Html.ActionLink("My Work Orders", "MyOrders")
+@Html.ActionLink("My Work Orders", "MyOrders")-->
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <style>
+        .cont {
+            position: relative;
+            padding: 50px;
+        }
+
+        .image {
+            opacity: 1;
+            display: block;
+            max-width: 250px;
+            min-width: 100%;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .cont:hover .image {
+            opacity: 0.3;
+        }
+
+        .cont:hover .middle {
+            opacity: 1;
+        }
+
+        .text {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            padding: 16px 32px;
+        }
+    </style>
+</head>
+
+<div class="row">
+    <div class="cont">
+        <a href="@Url.Action("#","Seattle")">
+            <img src="~/Pictures/user.png" alt="Avatar" class="image img-thumbnail">
+            <div class="middle">
+                <div class="text">Add/view Customers</div>
+            </div>
+        </a>
+    </div>
+    <div class="cont">
+        <a href="@Url.Action("#","Seattle")">
+            <img src="~/Pictures/Calculator.png" alt="Avatar" class="image img-thumbnail">
+            <div class="middle">
+                <div class="text">Quote Information</div>
+            </div>
+        </a>
+    </div>
+    <div class="cont">
+        <a href="@Url.Action("#","Seattle")">
+            <img src="~/Pictures/Add.png" alt="Avatar" class="image img-thumbnail">
+            <div class="middle">
+                <div class="text">Create Work Order</div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="cont">
+        <a href="@Url.Action("#","Seattle")">
+            <img src="~/Pictures/Search.png" alt="Avatar" class="image img-thumbnail">
+            <div class="middle">
+                <div class="text">Search for Work Orders</div>
+            </div>
+        </a>
+    </div>
+
+    <div class="cont">
+        <a href="@Url.Action("#","Seattle")">
+            <img src="~/Pictures/reports.png" alt="Avatar" class="image img-thumbnail">
+            <div class="middle">
+                <div class="text">Generate Reports</div>
+            </div>
+        </a>
+    </div>
+    <div class="cont">
+        <a href="@Url.Action("#","Seattle")">
+            <img src="~/Pictures/Question.png" alt="Avatar" class="image img-thumbnail">
+            <div class="middle">
+                <div class="text">Help/Report bugs</div>
+            </div>
+        </a>
+    </div>
+</div>s
