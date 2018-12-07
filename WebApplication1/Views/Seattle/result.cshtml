@@ -60,10 +60,19 @@
         <dt>
             @Html.DisplayNameFor(model => model.ActualPrice)
         </dt>
-
-        <dd>
-            $@Html.DisplayFor(model => model.ActualPrice)
-        </dd>
+        @if (Model.ActualPrice == null)
+        {
+            <dd>
+                @Html.DisplayFor(model => model.ActualPrice)
+            </dd>
+        }
+        else
+        {
+            <dd>
+                $@Html.DisplayFor(model => model.ActualPrice)
+            </dd>
+        }
+        
 
         <dt>
             @Html.DisplayNameFor(model => model.Comments)

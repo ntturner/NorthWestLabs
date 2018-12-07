@@ -160,8 +160,8 @@ namespace WebApplication1.Controllers
             var id = 0;
             IEnumerable<Work_Order> work_Orders = db.Database.SqlQuery<Work_Order>("SELECT * " +
                 "FROM Work_Order WO inner join Customer C ON Wo.CustomerID = C.CustomerID " +
-                "WHERE C.CustomerFirstName = '" + firstname + "' AND C.CustomerLastName = '" + lastname + "' " +
-                "AND WO.StatusID = 1");
+                "WHERE C.CustomerFirstName = '" + firstname + "' AND C.CustomerLastName = '" + lastname + "' " + 
+                "AND WO.StatusID=1");
             foreach (Work_Order item in work_Orders)
             {
                 id = item.OrderID;
