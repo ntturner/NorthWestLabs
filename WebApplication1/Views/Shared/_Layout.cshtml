@@ -20,9 +20,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="@Url.Action("Index", "Home")">Home</a>
-                <a class="nav-item nav-link" href="@Url.Action("About", "Home")">Features</a>
-                <a class="nav-item nav-link" href="@Url.Action("Contact", "Home")">Pricing</a>
+                @if (!Request.IsAuthenticated)
+                {
+                    <a class="nav-item nav-link" href="@Url.Action("Index", "Home")">Home</a>
+                }
+                else
+                {
+                    <a class="nav-item nav-link" href="@Url.Action("Index", "Singapore")">Lab Employee</a>
+                    <a class="nav-item nav-link" href="@Url.Action("Index", "Seattle")">Support Employee</a>
+                    <a class="nav-item nav-link" href="@Url.Action("MyOrders", "Seattle")">My Orders</a>
+                }
             </div>
 
             @Html.Partial("_LoginPartial")

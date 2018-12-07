@@ -18,11 +18,17 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
+                 @if (!Request.IsAuthenticated)
+                {
                     <a class="nav-item nav-link" href="@Url.Action("Index", "Home")">Home</a>
-                    <a class="nav-item nav-link" href="@Url.Action("About", "Home")">Features</a>
-                    <a class="nav-item nav-link" href="@Url.Action("Contact", "Home")">Pricing</a>
-                </div>
+                    <a class="nav-item nav-link" href="@Url.Action("AssayCatalog", "Home")">Catalog</a>
+                }
+                else
+                {
+                    <a class="nav-item nav-link" href="@Url.Action("Index", "Singapore")">Lab Employee</a>
+                    <a class="nav-item nav-link" href="@Url.Action("Index", "Seattle")">Support Employee</a>
+                    <a class="nav-item nav-link" href="@Url.Action("MyOrders", "Seattle")">My Orders</a>
+                }
 
                 @Html.Partial("_LoginPartial")
             </div>
@@ -71,16 +77,16 @@
             <div class="row mt-5">
                 <div class="col-md-4 hover-fade">
                     <a href="@Url.Action("AssayCatalog")">
-                        <img src="~/Pictures/Testing.jpg" class="img-fluid rounded-circle" />
+                        <img src="~/Pictures/microscopes.jpg" class="img-fluid rounded-circle" />
 
                         <div class="btn btn-success btn-hover">Assay Catalog</div>
                     </a>
                 </div>
                 <div class="col-md-4 hover-fade">
-                    <a href="@Url.Action("About")">
+                    <a href="@Url.Action("Index", "Seattle")">
                         <img src="~/Pictures/Man with microscope.jpg" class="img-fluid rounded-circle" />
 
-                        <div class="btn btn-success btn-hover">About Us</div>
+                        <div class="btn btn-success btn-hover">Client Portal</div>
                     </a>
                 </div>
                 <div class="col-md-4 hover-fade">
