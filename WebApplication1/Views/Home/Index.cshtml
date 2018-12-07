@@ -1,27 +1,117 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Northwest Labs</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
 
-<div class="jumbotron" style="background-image:url('../../Pictures/Lab header.jpg');background-size:cover; min-height:300px">
-    <h1 style="color:white; padding-top:100px">NORTHWEST LABS</h1>
-</div>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            @Html.ActionLink("Northwest Labs", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="@Url.Action("Index", "Home")">Home</a>
+                    <a class="nav-item nav-link" href="@Url.Action("About", "Home")">Features</a>
+                    <a class="nav-item nav-link" href="@Url.Action("Contact", "Home")">Pricing</a>
+                </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <img src="~/Pictures/Testing.jpg" class="img-thumbnail"/>
-        <p>
-           Here at NorthWest Labs we have a number of Assay Tests that can be requested. These Assay Tests are performed by our world-class team of professionals to get the results you need.
-        </p>
-        <p><a class="btn btn-default" href="@Url.Action("AssayCatalog")">Assay Catalog &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <img src="~/Pictures/Man with microscope.jpg" class="img-thumbnail" />
-        <p>Learn more about our state of the art facilities and world-class team.</p>
-        <p><a class="btn btn-default" href="@Url.Action("About")">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <img src="~/Pictures/pouring chemicals.jpg" class="img-thumbnail" />
-        <p>Have questions? Feel free to contact our Customer Service team at any time!</p>
-        <p><a class="btn btn-default" href="@Url.Action("Contact")">Contact Us &raquo;</a></p>
-    </div>
-</div>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </nav>
+
+        <div id="homeCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+
+                <div class="carousel-item active home-parallax" id="parallax1">
+                    <div class="h-bg appear-head">
+                        <h1 class="text-right">Northwest<br /> <span class="appear-subhead">Labs</span></h1>
+                    </div>
+                </div>
+
+                <div class="carousel-item home-parallax" id="parallax2">
+                    <div class="h-bg">
+                        <h1 class="text-right">Northwest<br /> Labs</h1>
+                    </div>
+                </div>
+
+                <div class="carousel-item home-parallax" id="parallax3">
+                    <div class="h-bg">
+                        <h1 class="text-right">Northwest<br /> Labs</h1>
+                    </div>
+                </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#homeCarousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#homeCarousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="container">
+                        <p class="text-center">
+                            Here at NorthWest Labs we have a number of Assay Tests that can be requested. These Assay Tests are performed by our world-class team of professionals to get the results you need.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-4 hover-fade">
+                    <a href="@Url.Action("AssayCatalog")">
+                        <img src="~/Pictures/Testing.jpg" class="img-fluid rounded-circle" />
+
+                        <div class="btn btn-success btn-hover">Assay Catalog</div>
+                    </a>
+                </div>
+                <div class="col-md-4 hover-fade">
+                    <a href="@Url.Action("About")">
+                        <img src="~/Pictures/Man with microscope.jpg" class="img-fluid rounded-circle" />
+
+                        <div class="btn btn-success btn-hover">About Us</div>
+                    </a>
+                </div>
+                <div class="col-md-4 hover-fade">
+                    <a href="@Url.Action("Contact")">
+                        <img src="~/Pictures/pouring chemicals.jpg" class="img-fluid rounded-circle" />
+
+                        <div class="btn btn-success btn-hover">Contact Us</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer class="page-footer font-small bg-dark text-light pt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <h5 class="text-uppercase font-weight-bold">Northwest Labs</h5>
+                        <p>As a company, our goal is to help keep people safe by ensuring the safety of the compounds our customers send us.</p>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <h5 class="text-uppercase font-weight-bold">Have questions?</h5>
+                        <p>Contact us at email@email.com. You may also <a href="@Url.Action("Login", "Account")">log in</a> to view your work order status.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright text-center py-3">
+                © 2018 Copyright Northwest Labs
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+    </body>
+</html>
