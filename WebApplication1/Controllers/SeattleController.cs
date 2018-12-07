@@ -147,5 +147,93 @@ namespace WebApplication1.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Search(string firstname, string lastname)
+        {
+            var id = 0;
+            IEnumerable<Work_Order> work_Orders = db.Database.SqlQuery<Work_Order>("SELECT * " +
+                "FROM Work_Order WO inner join Customer C ON Wo.CustomerID = C.CustomerID " +
+                "WHERE C.CustomerFirstName = '" + firstname + "' AND C.CustomerLastName = '" + lastname + "' " +
+                "AND WO.StatusID = 1");
+            foreach (Work_Order item in work_Orders)
+            {
+                id = item.OrderID;
+            }
+            Work_Order work_Order = db.WorkOrders.Find(id);
+            if (work_Orders == null)
+            {
+                ViewBag.search = "No work order associated with that customer was found.";
+                return View();
+            }
+            return View("result", work_Order);
+        }
+        public ActionResult result()
+        {
+            return View();
+        }
+
+        public ActionResult Reports()
+        {
+            return View();
+        }
+
+        public ActionResult WorkOrder()
+        {
+            return View();
+        }
+
+        public ActionResult ViewAll()
+        {
+
+            return RedirectToAction("Index", "Work_Order");
+        }
+
+       public ActionResult Catalogs()
+        {
+            return View();
+        }
+
+        public ActionResult AssayCatalog()
+        {
+            return View(db.Assays.ToList());
+        }
+
+        // GET: Assays/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Assay assay = db.Assays.Find(id);
+            if (assay == null)
+            {
+                return HttpNotFound();
+            }
+            return View(assay);
+        }
+
+        // POST: Assays/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "AssayID,AssayName,Duration,Protocol,Description")] Assay assay)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(assay).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(assay);
+        }
     }
 }

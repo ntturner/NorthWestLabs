@@ -244,6 +244,7 @@
     <Content Include="Pictures\Approved.png" />
     <Content Include="Pictures\Archived.png" />
     <Content Include="Pictures\Calculator.png" />
+    <Content Include="Pictures\edit.png" />
     <Content Include="Pictures\Lab header.jpg" />
     <Content Include="Pictures\Man with microscope.jpg" />
     <Content Include="Pictures\Materials.png" />
@@ -419,15 +420,19 @@
     <Content Include="Views\Singapore\Edit.cshtml" />
     <Content Include="Views\Singapore\MaterialsInventory.cshtml" />
     <Content Include="Views\Singapore\OrderMaterials.cshtml" />
-    <Content Include="Views\Singapore\WorkOrder.cshtml" />
-    <Content Include="Views\Singapore\ViewAll.cshtml" />
-    <Content Include="Views\Singapore\Search.cshtml" />
-    <Content Include="Views\Singapore\result.cshtml" />
+    <Content Include="Views\Seattle\WorkOrder.cshtml" />
+    <Content Include="Views\Seattle\ViewAll.cshtml" />
+    <Content Include="Views\Seattle\Search.cshtml" />
+    <Content Include="Views\Seattle\result.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Confirmation.cshtml" />
     <Content Include="Views\Home\AssayCatalog.cshtml" />
     <Content Include="Views\Seattle\Index.cshtml" />
     <Content Include="Views\Seattle\MyOrders.cshtml" />
+    <Content Include="Views\Seattle\Reports.cshtml" />
+    <Content Include="Views\Seattle\Catalogs.cshtml" />
+    <Content Include="Views\Seattle\AssayCatalog.cshtml" />
+    <Content Include="Views\Seattle\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

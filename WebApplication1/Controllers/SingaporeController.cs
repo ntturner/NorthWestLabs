@@ -129,47 +129,6 @@ namespace WebApplication1.Controllers
             return View(materials);
         }
 
-        public ActionResult WorkOrder()
-        {
-            return View();
-        }
-
-        public ActionResult ViewAll()
-        {
-
-            return RedirectToAction("Index", "Work_Order");
-        }
-
-        public ActionResult Search()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Search(string firstname, string lastname)
-        {
-            var id = 0;
-            IEnumerable<Work_Order> work_Orders = db.Database.SqlQuery<Work_Order>("SELECT * " +
-                "FROM Work_Order WO inner join Customer C ON Wo.CustomerID = C.CustomerID " +
-                "WHERE C.CustomerFirstName = '" + firstname + "' AND C.CustomerLastName = '" + lastname+"' " +
-                "AND WO.StatusID = 1");
-            foreach (Work_Order item in work_Orders)
-            {
-                id = item.OrderID;
-            }
-            Work_Order work_Order = db.WorkOrders.Find(id);
-            if (work_Orders==null)
-            {
-                ViewBag.search = "No work order associated with that customer was found.";
-                return View();
-            }
-            return View("result",work_Order);
-        }
-        public ActionResult result()
-        {
-            return View();
-        }
-
         public ActionResult Archived()
         {
             return View();

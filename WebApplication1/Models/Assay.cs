@@ -20,5 +20,6 @@ namespace WebApplication1.Models
         public string AssayName { get; set; }
         public int? Duration { get; set; }
         public string Protocol { get; set; }
+        public string Description { get; set; }
     }
 }

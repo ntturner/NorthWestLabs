@@ -1,12 +1,14 @@
 ﻿@model IEnumerable<WebApplication1.Models.Assay>
 
 @{
-    ViewBag.Title = "Assays";
+    ViewBag.Title = "Index";
 }
 
-<h2>Assays</h2>
+<h2>Index</h2>
 
-
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -18,33 +20,35 @@
         <th>
             @Html.DisplayNameFor(model => model.Protocol)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssayName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Duration) days
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Protocol)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.AssayID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.AssayID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.AssayID })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssayName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Protocol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AssayID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AssayID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AssayID })
+        </td>
+    </tr>
+}
 
 </table>
-<p>
-    @Html.ActionLink("Create New Assay", "Create")
-</p>
+
 <br />
-<br />
-<a href="@Url.Action("Index","Singapore")">Back to Home Page</a>
+<a href="@Url.Action("Index","Singapore")">Return to Home Page</a>"

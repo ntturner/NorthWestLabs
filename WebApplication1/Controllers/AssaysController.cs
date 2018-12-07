@@ -47,7 +47,7 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AssayID,AssayName,Duration,Protocol")] Assay assay)
+        public ActionResult Create([Bind(Include = "AssayID,AssayName,Duration,Protocol,Description")] Assay assay)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AssayID,AssayName,Duration,Protocol")] Assay assay)
+        public ActionResult Edit([Bind(Include = "AssayID,AssayName,Duration,Protocol,Description")] Assay assay)
         {
             if (ModelState.IsValid)
             {
