@@ -251,6 +251,7 @@
     <Content Include="Pictures\Microscopes.jpg" />
     <Content Include="Pictures\Modify.png" />
     <Content Include="Pictures\money.png" />
+    <Content Include="Pictures\beakers.jpg" />
     <Content Include="Pictures\pouring chemicals.jpg" />
     <Content Include="Pictures\Question.png" />
     <Content Include="Pictures\reports.png" />
@@ -434,6 +435,7 @@
     <Content Include="Views\Seattle\Catalogs.cshtml" />
     <Content Include="Views\Seattle\AssayCatalog.cshtml" />
     <Content Include="Views\Seattle\Edit.cshtml" />
+    <Content Include="Views\Seattle\CustomerPortal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

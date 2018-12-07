@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "CustomerPortal";
+}
+
+@if(ViewBag.Message != null)
+{
+    <div class="alert alert-danger mt-3" role="alert">@ViewBag.Message</div>
+}
+
+<div class="row">
+    <div class="col-sm-6 p-3 hover-fade">
+        <a href="@Url.Action("MyOrders","Seattle")">
+            <img src="~/Pictures/Modify.png" alt="Avatar" class="img-thumbnail">
+            <div class="btn btn-success btn-hover">My Orders</div>
+        </a>
+    </div>
+    <div class="col-sm-6 p-3 hover-fade">
+        <a href="@Url.Action("MyInvoice","Seattle")">
+            <img src="~/Pictures/Archived.png" alt="Avatar" class="img-thumbnail">
+            <div class="btn btn-success btn-hover">My Invoice</div>
+        </a>
+    </div>
+</div>

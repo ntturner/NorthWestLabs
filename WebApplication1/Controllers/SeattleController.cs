@@ -135,17 +135,22 @@ namespace WebApplication1.Controllers
         public ActionResult MyOrders()
         {
             string user_id = User.Identity.GetUserId();
-            Customer cust_user = db.Customers.Single(x => x.UserID == user_id);
-            if(cust_user != null)
+            try
             {
+                Customer cust_user = db.Customers.Single(x => x.UserID == user_id);
                 var workOrders = db.WorkOrders.Where(w => w.CustomerID == cust_user.CustomerID).Include(w => w.Customer).Include(w => w.Status);
                 return View(workOrders.ToList());
             }
-            else
+            catch
             {
                 ViewBag.Message = "Uh oh, we were unable to find you in our customer database! Please contact support.";
-                return View();
+                return View("CustomerPortal");
             }
+        }
+
+        public ActionResult CustomerPortal()
+        {
+            return View();
         }
 
         [HttpGet]
@@ -158,21 +163,30 @@ namespace WebApplication1.Controllers
         public ActionResult Search(string firstname, string lastname)
         {
             var id = 0;
-            IEnumerable<Work_Order> work_Orders = db.Database.SqlQuery<Work_Order>("SELECT * " +
+            try
+            {
+                IEnumerable<Work_Order> work_Orders = db.Database.SqlQuery<Work_Order>("SELECT * " +
                 "FROM Work_Order WO inner join Customer C ON Wo.CustomerID = C.CustomerID " +
                 "WHERE C.CustomerFirstName = '" + firstname + "' AND C.CustomerLastName = '" + lastname + "' " + 
                 "AND WO.StatusID=1");
-            foreach (Work_Order item in work_Orders)
-            {
-                id = item.OrderID;
+                foreach (Work_Order item in work_Orders)
+                {
+                    id = item.OrderID;
+                    Work_Order work_Order = db.WorkOrders.Find(id);
+                    
+                    if(work_Order == null)
+                    {
+                        throw new ArgumentNullException();
+                    }
+                    return View("result", work_Order);
+                }
             }
-            Work_Order work_Order = db.WorkOrders.Find(id);
-            if (work_Orders == null)
+            catch
             {
-                ViewBag.search = "No work order associated with that customer was found.";
-                return View();
+                ViewBag.Message = "No work order associated with that customer was found.";
+                return View("Index");
             }
-            return View("result", work_Order);
+            
         }
         public ActionResult result()
         {
@@ -238,7 +252,7 @@ namespace WebApplication1.Controllers
 
         public ActionResult MyInvoice()
         {
-            return RedirectToAction("Index","Invoice");
+            return RedirectToAction("Index","Invoices");
         }
     }
 }

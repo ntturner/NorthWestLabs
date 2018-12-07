@@ -34,13 +34,12 @@ textarea {
 }
 .h-bg{
     margin: auto;
-    max-width: 250px;
-    height: 110px;;
     background-color: lightgray;
     opacity: 0.8;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 25px;
+    width: 280px;
     border-radius: 10px;
 }
 .home-parallax h1{

@@ -1,5 +1,6 @@
 ﻿@{
     Layout = null;
+    ViewBag.Title = "Home";
 }
 <!DOCTYPE html>
 <html>
@@ -18,19 +19,19 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                 @if (!Request.IsAuthenticated)
-                {
-                    <a class="nav-item nav-link" href="@Url.Action("Index", "Home")">Home</a>
-                    <a class="nav-item nav-link" href="@Url.Action("AssayCatalog", "Home")">Catalog</a>
-                }
-                else
-                {
-                    <a class="nav-item nav-link" href="@Url.Action("Index", "Singapore")">Lab Employee</a>
-                    <a class="nav-item nav-link" href="@Url.Action("Index", "Seattle")">Support Employee</a>
-                    <a class="nav-item nav-link" href="@Url.Action("MyOrders", "Seattle")">My Orders</a>
-                    <a class="nav-item nav-link" href="@Url.Action("MyInvoice", "Seattle")">My Invoice</a>
-                }
-
+                <div class="navbar-nav">
+                    @if (!Request.IsAuthenticated)
+                    {
+                        <a class="nav-item nav-link" href="@Url.Action("Index", "Home")">Home</a>
+                        <a class="nav-item nav-link" href="@Url.Action("AssayCatalog", "Home")">Catalog</a>
+                    }
+                    else
+                    {
+                        <a class="nav-item nav-link" href="@Url.Action("Index", "Singapore")">Lab Employee</a>
+                        <a class="nav-item nav-link" href="@Url.Action("Index", "Seattle")">Support Employee</a>
+                        <a class="nav-item nav-link" href="@Url.Action("CustomerPortal", "Seattle")">Client Portal</a>
+                    }
+                </div>
                 @Html.Partial("_LoginPartial")
             </div>
         </nav>
@@ -76,21 +77,21 @@
                 </div>
             </div>
             <div class="row mt-5">
-                <div class="col-md-4 hover-fade">
+                <div class="col-md-4 hover-fade px-3">
                     <a href="@Url.Action("AssayCatalog")">
                         <img src="~/Pictures/microscopes.jpg" class="img-fluid rounded-circle" />
 
                         <div class="btn btn-success btn-hover">Assay Catalog</div>
                     </a>
                 </div>
-                <div class="col-md-4 hover-fade">
-                    <a href="@Url.Action("Index", "Seattle")">
+                <div class="col-md-4 hover-fade px-3">
+                    <a href="@Url.Action("CustomerPortal", "Seattle")">
                         <img src="~/Pictures/Man with microscope.jpg" class="img-fluid rounded-circle" />
 
                         <div class="btn btn-success btn-hover">Client Portal</div>
                     </a>
                 </div>
-                <div class="col-md-4 hover-fade">
+                <div class="col-md-4 hover-fade px-3">
                     <a href="@Url.Action("Contact")">
                         <img src="~/Pictures/pouring chemicals.jpg" class="img-fluid rounded-circle" />
 
