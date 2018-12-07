@@ -4,11 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Assays</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -41,14 +39,16 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AssayID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AssayID }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.AssayID }) 
+            @Html.ActionLink("Details", "Details", new { id=item.AssayID }) 
             @Html.ActionLink("Delete", "Delete", new { id=item.AssayID })
         </td>
     </tr>
 }
 
 </table>
-
+<p>
+    @Html.ActionLink("Create New Assay", "Create")
+</p>
 <br />
-<a href="@Url.Action("Index","Singapore")">Return to Home Page</a>"
+<a href="@Url.Action("Index","Singapore")">Return to Home Page</a>
