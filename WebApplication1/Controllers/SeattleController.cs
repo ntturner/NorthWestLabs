@@ -12,6 +12,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize]
     public class SeattleController : Controller
     {
         private NorthWestContext db = new NorthWestContext();
@@ -131,7 +132,6 @@ namespace WebApplication1.Controllers
             return View(assay_Tests.ToList());
         }
 
-        [Authorize]
         public ActionResult MyOrders()
         {
             string user_id = User.Identity.GetUserId();

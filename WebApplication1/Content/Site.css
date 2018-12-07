@@ -159,3 +159,10 @@ textarea {
     font-size: 16px;
     padding: 16px 32px;
 }
+
+#add-compound{
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    padding: 25px;
+}
