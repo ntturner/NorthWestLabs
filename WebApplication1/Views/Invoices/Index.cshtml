@@ -4,54 +4,54 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>My Invoices</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.WorkOrder.Comments)
+            Invoice Number
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateDue)
+            Work Order Number
+        </th>
+        <th>
+            Payment Due Date
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Amount)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EarlyDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EarlyDiscount)
+            Early Payment Date
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
+    if (item.WorkOrder.CustomerID==ViewBag.ID)
+    {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.WorkOrder.Comments)
+        <td style="text-align:center">
+            @Html.DisplayFor(modelItem => item.InvoiceID)
+        </td>
+        <td style="text-align:center">
+            @Html.DisplayFor(modelItem => item.OrderID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateDue)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Amount)
+            $@Html.DisplayFor(modelItem => item.Amount)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EarlyDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EarlyDiscount)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.InvoiceID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.InvoiceID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.InvoiceID })
+            <a href="@Url.Action("Pay","Seattle")">Pay Now</a>
         </td>
     </tr>
+    }
+    
 }
 
 </table>

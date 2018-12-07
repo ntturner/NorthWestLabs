@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -18,6 +19,13 @@ namespace WebApplication1.Controllers
         // GET: Invoices
         public ActionResult Index()
         {
+            var userID = "7c46f86c-2cb4-41ab-95a4-3507ab9aea07";
+
+            IEnumerable<Customer> customers = db.Database.SqlQuery<Customer>("SELECT * FROM Customer WHERE Customer.UserID='"+ userID + "'");
+            foreach (Customer item in customers)
+            {
+                ViewBag.ID = item.CustomerID;
+            }
             var invoices = db.Invoices.Include(i => i.WorkOrder);
             return View(invoices.ToList());
         }

@@ -235,5 +235,10 @@ namespace WebApplication1.Controllers
             }
             return View(assay);
         }
+
+        public ActionResult MyInvoice()
+        {
+            return RedirectToAction("Index","Invoice");
+        }
     }
 }
